@@ -28,8 +28,7 @@
     <script>
      var app = angular.module("myApp", []);
      app.controller("CommentsCtrl", function($scope){
-      console.log($scope);
-      $scope.comments = [
+        $scope.comments = [
          {
            "username": "Magdalena",
            "city": "Catherine",
@@ -74,6 +73,16 @@
          }
       ];
      });
+
+//    - AngularJs permet d’organiser les différentes fonctionnalités sous forme de modules. 
+//      Ils permettent de garder notre système bien organisé.
+//    - Pour créer un module : var app = angular.module(‘app’, []) ; 
+//      Le tableau vide [] permet d’injecter différents modules (externes), 
+//      on peut voir cela comme une injection de dépendance
+//    - Ensuite si on veut créer un controller dans ce module, 
+//      il faut récupérer le module app, et faire : app.controller(‘nomducontroller’, lafonctionàappeler)
+//    - Enfin, il faut indiquer à ng-app d’appeler le module : ng-app="app"
+
     </script>
      
    </body>
