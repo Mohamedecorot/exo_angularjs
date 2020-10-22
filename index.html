@@ -5,27 +5,76 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body ng-app>
-    <input type="text" ng-model="query"/>
-    <select ng-model="order">
-        <option value="username">Organiser par nom</option>
-        <option value="content">Organiser par contenu</option>
-    </select>
+<body ng-app  = "myApp" >
+    <div ng-controller = "CommentsCtrl">
 
-    <div ng-init="users=[{username:'Marc', content: 'Salut les gens'}, 
-                         {username:'Jean', content: 'Je suis content'},
-                         {username:'john', content: 'First'}    
-    ]">
-        <div ng-repeat="user in users | filter: {content: query} | orderBy: order">
-            <p>
-                <strong>{{user.username}}</strong><br>
-                {{user.content}}
-            </p>
-        </div>
+        <input type="text" ng-model = "query">
+        <select ng-model="order">
+        <option value = "username"> Organiser par nom</option>
+        <option value = "content">Organiser par contenu</option>
+        </select>
+    
+        <div ng-repeat ="comment in comments | 
+        filter: {content:query} | orderBy: order">
+        <p>
+        <strong>{{comment.username}}</strong><br>
+        {{comment.content}}
+        </p>
+        </div>  
     </div>
-
-    {{ task }}
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.1/angular.min.js"></script>
-</body>
+    
+    <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.6.7/angular.min.js"></script>
+  
+    <script>
+     var app = angular.module("myApp", []);
+     app.controller("CommentsCtrl", function($scope){
+      console.log($scope);
+      $scope.comments = [
+         {
+           "username": "Magdalena",
+           "city": "Catherine",
+           "email": "magdalenareese@aquacine.com",
+           "content": "Anim consequat ea fugiat esse cillum quis sunt labore."
+         },
+         {
+           "username": "Levine",
+           "city": "Rosburg",
+           "email": "levinereese@aquacine.com",
+           "content": "Labore est enim aliqua proident."
+         },
+         {
+           "username": "Jillian",
+           "city": "Westwood",
+           "email": "jillianreese@aquacine.com",
+           "content": "Proident enim proident Lorem est cillum esse adipisicing aliquip."
+         },
+         {
+           "username": "Gillespie",
+           "city": "Basye",
+           "email": "gillespiereese@aquacine.com",
+           "content": "Et occaecat exercitation consequat exercitation aute nisi."
+         },
+         {
+           "username": "Lilly",
+           "city": "Caroline",
+           "email": "lillyreese@aquacine.com",
+           "content": "Velit eiusmod nisi do et excepteur ad cupidatat proident incididunt exercitation aute dolore laborum sit."
+         },
+         {
+           "username": "Puckett",
+           "city": "Trail",
+           "email": "puckettreese@aquacine.com",
+           "content": "Proident et duis officia pariatur aliqua anim ipsum laboris tempor."
+         },
+         {
+           "username": "Clements",
+           "city": "Muir",
+           "email": "clementsreese@aquacine.com",
+           "content": "Nostrud minim minim in qui."
+         }
+      ];
+     });
+    </script>
+     
+   </body>
 </html>
