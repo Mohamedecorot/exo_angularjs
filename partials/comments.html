@@ -1,10 +1,21 @@
 <a href="#/">Revenir aux articles</a>
 
-<h1>{{title}}</h1>
+<div ng-hide="loading">
+    <h1>{{title}}</h1>
 
-<div ng-repeat ="comment in comments | filter: {content: query} | orderBy:order">
-    <p>
-        <strong>{{comment.username}}</strong><br>
-        {{comment.content}}
-    </p>
-</div>  
+    <div ng-repeat ="comment in comments | filter: {content: query} | orderBy:order">
+        <p>
+            <strong>{{comment.username}}</strong><br>
+            {{comment.content}}
+        </p>
+    </div>  
+
+    <h4>Ajouter un commentaire : </h4>
+    <form ng-submit="addComment()">
+        <input type="text" placeholder="username" ng-model="newComment.username"/><br>
+        <input type="text" placeholder="city" ng-model="newComment.city"/><br>
+        <input type="text" placeholder="email" ng-model="newComment.email"/><br>
+        <textarea ng-model="newComment.content"></textarea><br>
+        <input type="submit" value="Envoyer"/>
+    </form>
+</div>
